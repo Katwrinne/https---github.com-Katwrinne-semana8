@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                              QComboBox, QListWidget, QMessageBox, QFormLayout)
 from PyQt5.QtCore import Qt
 from datetime import datetime
-
+#
 class GestionGastosApp(QMainWindow):
     def __init__(self):
         super().__init__()
