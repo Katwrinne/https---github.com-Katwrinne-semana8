@@ -8,7 +8,7 @@ from datetime import datetime
 class GestionGastosApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Gestión de Gastos Personales")
+        self.setWindowTitle("GESTION DE GASTOS PERSONALES")
         self.setGeometry(100, 100, 600, 500)
         
         # Datos de la aplicación
@@ -21,7 +21,7 @@ class GestionGastosApp(QMainWindow):
         layout_principal = QVBoxLayout(central_widget)
         
         # Título de la aplicación
-        titulo = QLabel("Sistema de Gestión de Gastos Personales")
+        titulo = QLabel("SISTEMA DE GESTION DE GASTOS PERSONALES")
         titulo.setAlignment(Qt.AlignCenter)
         titulo.setStyleSheet("font-size: 18px; font-weight: bold; margin: 10px;")
         layout_principal.addWidget(titulo)
@@ -40,7 +40,6 @@ class GestionGastosApp(QMainWindow):
         self.combo_categoria = QComboBox()
         self.combo_categoria.addItems(self.categorias)
         layout_formulario.addRow(QLabel("Categoría:"), self.combo_categoria)
-        
         layout_principal.addLayout(layout_formulario)
         
         # Botones
