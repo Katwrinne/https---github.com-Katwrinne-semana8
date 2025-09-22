@@ -109,11 +109,6 @@ class GestionGastosApp(QMainWindow):
         
         QMessageBox.information(self, "Éxito", "Gasto agregado correctamente.")
     
-    def limpiar_campos(self):
-        """Limpia los campos de entrada"""
-        self.input_descripcion.clear()
-        self.input_monto.clear()
-        self.combo_categoria.setCurrentIndex(0)
     
     def actualizar_lista_gastos(self):
         """Actualiza la lista visual de gastos y el total"""
