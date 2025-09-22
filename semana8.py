@@ -8,7 +8,7 @@ from datetime import datetime
 class GestionGastosApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Gestión de Gastos Personales")
+        self.setWindowTitle("GESTION DE GASTOS PERSONALES")
         self.setGeometry(100, 100, 600, 500)
         
         # Datos de la aplicación
@@ -20,7 +20,7 @@ class GestionGastosApp(QMainWindow):
         self.setCentralWidget(central_widget)
         layout_principal = QVBoxLayout(central_widget)
         
-        # Título
+        # Título de la aplicación
         titulo = QLabel("Sistema de Gestión de Gastos Personales")
         titulo.setAlignment(Qt.AlignCenter)
         titulo.setStyleSheet("font-size: 18px; font-weight: bold; margin: 10px;")
@@ -40,7 +40,6 @@ class GestionGastosApp(QMainWindow):
         self.combo_categoria = QComboBox()
         self.combo_categoria.addItems(self.categorias)
         layout_formulario.addRow(QLabel("Categoría:"), self.combo_categoria)
-        
         layout_principal.addLayout(layout_formulario)
         
         # Botones
@@ -101,6 +100,12 @@ class GestionGastosApp(QMainWindow):
         self.actualizar_lista_gastos()
         
         QMessageBox.information(self, "Éxito", "Gasto agregado correctamente.")
+    
+    def limpiar_campos(self):
+        """Limpia los campos de entrada"""
+        self.input_descripcion.clear()
+        self.input_monto.clear()
+        self.combo_categoria.setCurrentIndex(0)
     
     def actualizar_lista_gastos(self):
         self.lista_gastos.clear()
