@@ -20,7 +20,7 @@ class GestionGastosApp(QMainWindow):
         self.setCentralWidget(central_widget)
         layout_principal = QVBoxLayout(central_widget)
         
-        # Título de la aplicación
+        #Título de la aplicación
         titulo = QLabel("Sistema de Gestión de Gastos Personales")
         titulo.setAlignment(Qt.AlignCenter)
         titulo.setStyleSheet("font-size: 18px; font-weight: bold; margin: 10px;")
