@@ -13,20 +13,20 @@ class GestionGastosApp(QMainWindow):
         
         # Datos de la aplicación
         self.gastos = []
-        self.categorias = ["Alimentación", "Transporte", "Entretenimiento", "Salud", "Educación", "Otros"]
+        self.categorias = ["Alimentación", "Transporte", "Salud", "Educación", "Otros"]
         
         # Widget central y layout principal
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         layout_principal = QVBoxLayout(central_widget)
         
-        # Título de la aplicación
+        # Título
         titulo = QLabel("Sistema de Gestión de Gastos Personales")
         titulo.setAlignment(Qt.AlignCenter)
         titulo.setStyleSheet("font-size: 18px; font-weight: bold; margin: 10px;")
         layout_principal.addWidget(titulo)
         
-        # Formulario para ingresar gastos
+        #ingresar gastos
         layout_formulario = QFormLayout()
         
         self.input_descripcion = QLineEdit()
@@ -49,11 +49,7 @@ class GestionGastosApp(QMainWindow):
         self.btn_agregar = QPushButton("Agregar Gasto")
         self.btn_agregar.clicked.connect(self.agregar_gasto)
         layout_botones.addWidget(self.btn_agregar)
-        
-        self.btn_limpiar = QPushButton("Limpiar Campos")
-        self.btn_limpiar.clicked.connect(self.limpiar_campos)
-        layout_botones.addWidget(self.btn_limpiar)
-        
+       
         self.btn_resumen = QPushButton("Ver Resumen")
         self.btn_resumen.clicked.connect(self.mostrar_resumen)
         layout_botones.addWidget(self.btn_resumen)
@@ -74,7 +70,6 @@ class GestionGastosApp(QMainWindow):
         self.show()
     
     def agregar_gasto(self):
-        """Agrega un nuevo gasto a la lista"""
         descripcion = self.input_descripcion.text().strip()
         monto_texto = self.input_monto.text().strip()
         categoria = self.combo_categoria.currentText()
@@ -105,19 +100,9 @@ class GestionGastosApp(QMainWindow):
         # Actualizar lista visual
         self.actualizar_lista_gastos()
         
-        # Limpiar campos
-        self.limpiar_campos()
-        
         QMessageBox.information(self, "Éxito", "Gasto agregado correctamente.")
     
-    def limpiar_campos(self):
-        """Limpia los campos de entrada"""
-        self.input_descripcion.clear()
-        self.input_monto.clear()
-        self.combo_categoria.setCurrentIndex(0)
-    
     def actualizar_lista_gastos(self):
-        """Actualiza la lista visual de gastos y el total"""
         self.lista_gastos.clear()
         total = 0
         
@@ -129,7 +114,6 @@ class GestionGastosApp(QMainWindow):
         self.etiqueta_total.setText(f"Total gastado: ${total:.2f}")
     
     def mostrar_resumen(self):
-        """Muestra un resumen de gastos por categoría"""
         if not self.gastos:
             QMessageBox.information(self, "Resumen", "No hay gastos registrados.")
             return
@@ -144,7 +128,7 @@ class GestionGastosApp(QMainWindow):
             resumen[categoria] += gasto['monto']
             total += gasto['monto']
         
-        # Crear mensaje de resumen
+        #mensaje de resumen
         mensaje = "Resumen de Gastos por Categoría:\n\n"
         for categoria, monto in resumen.items():
             porcentaje = (monto / total) * 100 if total > 0 else 0
